@@ -7,6 +7,7 @@ import android.media.MediaRecorder;
 
 import com.dongnaoedu.live.jni.PushNative;
 import com.dongnaoedu.live.params.AudioParam;
+import com.dongnaoedu.live.params.VideoParams;
 
 public class AudioPusher extends Pusher{
 
@@ -31,7 +32,7 @@ public class AudioPusher extends Pusher{
 
 	@Override
 	public void startPush() {
-
+        pushNative.setAudioOptions(audioParam.getSampleRateInHz(),audioParam.getChannel());
 		isPushing = true;
 		//启动一个录音子线程
 		new Thread(new AudioRecordTask()).start();
